@@ -15,7 +15,7 @@
 <a href="https://note-task-jeffersoncharlles.vercel.app/">Notes</a>
 
 ## PREVIEW BACK-END
-<a href="https://note-task-jeffersoncharlles.vercel.app/">Notes</a>
+<a href="https://note-task-production.up.railway.app/">Notes</a>
 
 
 ## Questões Teóricas
