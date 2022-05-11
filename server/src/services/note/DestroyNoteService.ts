@@ -1,22 +1,22 @@
 import { prisma } from "../../db/prisma"
 
 interface Props {
-    slug: string
+    id: string
 }
 
 class DestroyNoteService {
-    async execute({ slug }: Props) {
+    async execute({ id }: Props) {
 
-        if (!slug) {
+        if (!id) {
             throw new Error("Invalid params send")
         }
 
-        const slugExists = await prisma.note.findUnique({ where: { slug } })
+        const noteExists = await prisma.note.findFirst({ where: { id } })
 
-        if (!slugExists) {
+        if (!noteExists) {
             throw new Error("Invalid not Exists")
         }
-        const response = await prisma.note.delete({ where: { slug } })
+        const response = await prisma.note.delete({ where: { id } })
 
         return response
     }

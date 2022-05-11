@@ -1,17 +1,17 @@
 import { prisma } from "../../db/prisma";
 
 interface Props {
-    slug: string;
+    id: string;
 }
 
 class OneNoteService {
-    async execute({ slug }: Props) {
+    async execute({ id }: Props) {
 
-        if (!slug) {
+        if (!id) {
             throw new Error("Invalid params no send")
         }
 
-        const slugExists = await prisma.note.findUnique({ where: { slug } })
+        const slugExists = await prisma.note.findFirst({ where: { id } })
 
         if (!slugExists) {
             throw new Error("Invalid not exists")

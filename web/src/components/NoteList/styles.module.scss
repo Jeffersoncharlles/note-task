@@ -1,0 +1,5 @@
+.container {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr)); //250px mínimo
+}

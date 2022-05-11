@@ -6,8 +6,8 @@ import { DestroyNoteService } from "../../services/note/DestroyNoteService";
 class DestroyNoteController {
     async handle(req: Request, res: Response) {
         const destroy = new DestroyNoteService()
-        const { slug } = req.body
-        const response = await destroy.execute({ slug })
+        const { id } = req.body
+        const response = await destroy.execute({ id })
         return res.json(response)
 
     }

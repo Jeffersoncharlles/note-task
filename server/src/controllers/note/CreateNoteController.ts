@@ -5,8 +5,8 @@ import { CreateNoteService } from "../../services/note/CreateNoteService";
 class CreateNoteController {
     async handle(req: Request, res: Response) {
         const create = new CreateNoteService()
-        const { title, body } = req.body
-        const response = await create.execute({ title, body })
+        const { body, id } = req.body
+        const response = await create.execute({ body, id })
         return res.status(201).json(response)
     }
 }
