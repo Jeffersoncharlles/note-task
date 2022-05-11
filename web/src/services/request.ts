@@ -19,8 +19,12 @@ export const request = {
     OneNote: async (slug: string) => {
 
     },
-    UpdateNote: async ({ slug, title, body, id }: any) => {
+    UpdateNote: async ({ id, body }: any) => {
+        const { data } = await api.put(`/note/${id}`, { body })
 
+        if (data.id) {
+            return data
+        }
     },
     DestroyNote: async ({ id }: any) => {
         const { data } = await api.delete('/note', {

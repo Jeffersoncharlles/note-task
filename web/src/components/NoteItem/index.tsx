@@ -11,29 +11,45 @@ interface Props {
         updatedAt: string;
     },
     onDeleteNote: (id: string) => void
+    onSetNotes: ([]: any) => void
 }
-export const NoteItem = ({ note, onDeleteNote }: Props) => {
+export const NoteItem = ({ note, onDeleteNote, onSetNotes }: Props) => {
     const [isEdit, setIsEdit] = useState(false)
+    const [noteBody, setNoteBody] = useState(note.body)
 
     const handleEdit = () => {
         setIsEdit(true)
     }
 
+    // const random = Math.floor(Math.random() * 4);
+
+    const handleUpdate = async (id: string) => {
+        if (noteBody !== note.body) {
+            const response = await request.UpdateNote({ id, body: noteBody })
+            if (response.id) {
+                window.location.href = window.location.href //depois
+                onSetNotes((oldNotes: any) => [...oldNotes, response])
+            }
+        }
+        setIsEdit(false)
+    }
 
 
     return (
-        <div className={styles.container}>
+        <div className={styles.container}  >
             <textarea
                 placeholder='Adicionar nova nota...'
                 cols={10}
                 rows={8}
-                value={note.body}
-                onChange={() => { }}
+                value={noteBody}
+                onChange={e => setNoteBody(e.target.value)}
                 onClick={handleEdit}
             />
             <footer>
                 <small>{formatDate(String(note.updatedAt))}</small>
-                {!isEdit ? <MdDeleteForever size="1.3rem" onClick={() => onDeleteNote(note.id)} /> : <MdSave size="1.3rem" />}
+                {!isEdit ?
+                    <MdDeleteForever size="1.3rem" onClick={() => onDeleteNote(note.id)} /> :
+                    <MdSave size="1.3rem" onClick={() => handleUpdate(note.id)} />}
 
             </footer>
         </div>

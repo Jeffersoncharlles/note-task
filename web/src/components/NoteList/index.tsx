@@ -10,15 +10,16 @@ interface Props {
         updatedAt: string
     }[],
     onNewNote: (body: string) => void
-    onDeleteNote: (id: string) => void
+    onDeleteNote: (id: string) => void,
+    onSetNotes: ([]: any) => void
 }
 
-export const NoteList = ({ notes, onNewNote, onDeleteNote }: Props) => {
+export const NoteList = ({ notes, onNewNote, onDeleteNote, onSetNotes }: Props) => {
 
     return (
         <div className={styles.container}>
             {notes.map((item, index) => (
-                <NoteItem key={item.id} note={item} onDeleteNote={onDeleteNote} />
+                <NoteItem key={item.id} note={item} onDeleteNote={onDeleteNote} onSetNotes={onSetNotes} />
             ))}
             <NoteAdd onNewNote={onNewNote} />
 

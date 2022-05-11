@@ -20,9 +20,9 @@ Routers.get('/', (req, res) => {
 
 
 Routers.post('/note', createNoteController.handle)
-Routers.get('/note/:slug', oneNoteController.handle)
+Routers.get('/note/:id', oneNoteController.handle)
 Routers.get('/note', listNoteController.handle)
-Routers.put('/note/:slug', updateNoteController.handle)
+Routers.put('/note/:id', updateNoteController.handle)
 Routers.delete('/note', destroyNoteController.handle)
 
 

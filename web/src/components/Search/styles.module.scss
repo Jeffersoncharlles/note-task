@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    align-items: center;
+    background: #ececec;
+    border-radius: 1rem;
+    padding: 5px;
+    margin-bottom: 1.5rem;
+
+    input {
+        border: none;
+        background-color: #ececec;
+        flex: 1;
+
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
